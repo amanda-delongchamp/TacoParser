@@ -18,6 +18,8 @@
             if (cells.Length < 3)
             {
                 // Log that and return null
+                logger.LogWarning("Less than three items, incomplete data");
+
                 // Do not fail if one record parsing fails, return null
                 return null; // TODO Implement
             }
@@ -40,11 +42,13 @@
 
             // DONE:  Then, you'll need an instance of the TacoBell class
             // With the name and point set correctly
+            Point point = new Point();
+            point.Latitude = latitude;
+            point.Longitude = longitude;
 
             TacoBell tacoBell  = new TacoBell();
             tacoBell.Name = name;
-            tacoBell.Location.Latitude = latitude;
-            tacoBell.Location.Longitude = longitude;
+            tacoBell.Location = point;
 
             // Then, return the instance of your TacoBell class
             // Since it conforms to ITrackable
